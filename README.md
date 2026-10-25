@@ -45,7 +45,7 @@ The **firmware-derived pin mapping** is in [hardware/connections.md](hardware/co
 
 ## 3D-printed mechanism
 
-The source file is [3d-model/wheel.stl](3d-model/wheel.stl). The supplied mesh has a bounding box of approximately **80 × 80 × 20 model units**. STL files do not embed measurement units: confirm the intended size and scale in the slicer before printing.
+The source file is [3d-model/wheel.stl](wheel.stl). The supplied mesh has a bounding box of approximately **80 × 80 × 20 model units**. STL files do not embed measurement units: confirm the intended size and scale in the slicer before printing.
 
 The firmware assumes eight indexed dispensing positions, advancing 256 of an assumed 2,048 steps for each dispense. Actual angular travel and alignment must be verified on the finished assembly.
 
