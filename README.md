@@ -45,15 +45,16 @@ The **firmware-derived pin mapping** is in [hardware/connections.md](hardware/co
 
 ## 3D-printed mechanism
 
-The source file is [3d-model/wheel.stl](wheel.stl). The supplied mesh has a bounding box of approximately **80 × 80 × 20 model units**. STL files do not embed measurement units: confirm the intended size and scale in the slicer before printing.
+The source file is in [3d-model/wheel.stl](3d-model/wheel.stl). The supplied mesh has a bounding box of approximately **80 × 80 × 20 model units**. STL files do not embed measurement units: be aware that, before printing, each model unit is equivalent to **1 millimeter**.
 
 The firmware assumes eight indexed dispensing positions, advancing 256 of an assumed 2,048 steps for each dispense. Actual angular travel and alignment must be verified on the finished assembly.
 
 ## Firmware and software requirements
 
-- [**PillDispenser.ino**](firmware/PillDispenser/PillDispenser.ino): scheduled operation and menu interface.
-- [**PillDispenserPrototype.ino**](firmware/PillDispenserPrototype/PillDispenserPrototype.ino): an earlier diagnostic sketch showing RTC readings, LCD output, button/buzzer behavior, LCD backlight switching and motor testing.
-Required Arduino libraries:
+- [**PillDispenser.ino**](firmware/PillDispenser.ino): scheduled operation and menu interface.
+- [**PillDispenserPrototype.ino**](firmware/PillDispenserPrototype.ino): an earlier diagnostic sketch showing RTC readings, LCD output, button/buzzer behavior, LCD backlight switching and motor testing.
+
+### Required Arduino libraries:
 
 - `Wire` (Arduino core)
 - `RTClib` (Adafruit)
@@ -65,7 +66,7 @@ Required Arduino libraries:
 
 1. Install the Arduino IDE and, if necessary, the board package for your particular Arduino-compatible board.
 2. Install the Adafruit `RTClib` library and its dependencies through the Library Manager.
-3. Open `firmware/PillDispenser/PillDispenser.ino`, select the correct board and port, and upload.
+3. Open `firmware/PillDispenser.ino`, select the correct board and port, and upload.
 4. Check the RTC and use the clock-setting interface if the RTC reports an invalid time or lost power.
 5. Configure an alarm and test the device with **inert substitute items** only.
 
@@ -81,13 +82,13 @@ Required Arduino libraries:
 | Clock settings | Hold 2 seconds or longer, then release | Advance to the next field or save the clock settings. |
 | Active alert | Press and release | Acknowledge the reminder. |
 
-**Limitations of the current interface:** It does not expose a menu for listing, deleting or editing individual saved alarms. Reconfiguring the RTC clears all saved alarms.
-
 ## Limitations and potential improvements
 
-Notably, the firmware prevents a duplicate trigger in the same minute by recording the trigger **before** motor movement; if power fails during movement, this protects against a repeat but does **not** guarantee that the item was dispensed.
+The current interface does not expose a menu for listing, deleting or editing **individual** saved alarms. Reconfiguring the RTC clears all saved alarms.
 
-Possible future improvements include a better alarm-management interface, power-loss testing, position feedback or jam detection, a fully documented motor power supply, and a controlled assessment of dispensing consistency. These are **proposals**, not implemented features.
+Every time the 28BYJ-48 stepper motor rotates, **a voltage loss normally occurs**, so it is necessary to re-start the LCD screen right after it stops.
+
+Possible future improvements include a better alarm-management interface, power-loss testing, position feedback, the addition of an external motor power supply, and a controlled assessment of dispensing consistency. These are **proposals**, not implemented features.
 
 ## Development and contributions
 
@@ -95,16 +96,16 @@ This project was completed as part of a school robotics elective by three studen
 
 **Team credits**
 
-- Student 1 — [name, design / electronics / firmware / testing tasks actually performed]
-- Student 2 — [name, tasks actually performed]
-- Student 3 — [name, 3D design / fabrication / other tasks actually performed]
-- Teacher / school — [optional, with permission]
+- Student 1: **Lucas Mussi Cordioli** - electronics, firmware, testing.
+- Student 2: **Heitor Zenari Santos Oliveira** - initial design, testing.
+- Student 3: **Victor Lambert** - 3D design, 3D printing, testing.
+- Teacher: **Carlos Henrique Ries** - Guide/advisor, hardware supplier.
 
 **AI disclosure:** ChatGPT was used as an assistant during development of the final Arduino firmware. The group remains responsible for testing, understanding, and accurately describing the implemented behavior.
 
-## References and reuse
+## References
 
-- Science Buddies — *Automatic Pill Dispenser*, the project's initial inspiration: https://www.sciencebuddies.org/science-fair-projects/project-ideas/Elec_p105/electricity-electronics/automatic-pill-dispenser
-- Arduino libraries and component documentation — [add links to the exact boards and modules used].
+- Science Buddies - *Automatic Pill Dispenser*, the project's initial inspiration: [ScienceBuddies](https://www.sciencebuddies.org/science-fair-projects/project-ideas/Elec_p105/electricity-electronics/automatic-pill-dispenser)
+- RTClib - Adafruit´s Library for the RTC-DS3231: [RTClib](https://github.com/adafruit/rtclib)
 
 The included source files and mechanical model are contributions from the student project and **are not copies of Science Buddies' diagrams or text**.
