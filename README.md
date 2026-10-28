@@ -1,6 +1,6 @@
 # Automatic Pill Dispenser
 
-An Arduino-based educational prototype for scheduled pill dispensing, developed by a three-student robotics team for a 2026 school science fair.
+An Arduino-based educational prototype for scheduled pill dispensing, developed by a three-student robotics team for **COC Floripa´s 2026 science fair** (Jornada Científica).
 
 The project addresses the difficulty of remembering multiple medication times, especially for older adults. At a configured day and time, a stepper motor rotates a 3D-printed compartment wheel. An LCD and buzzer provide a visual and audible reminder. **This is a classroom proof of concept**, not a validated medical device: it must not be relied upon to store, organize, or dispense real medication.
 
@@ -45,7 +45,7 @@ The **firmware-derived pin mapping** is in [hardware/connections.md](hardware/co
 
 ## 3D-printed mechanism
 
-The source file is in [3d-model/wheel.stl](3d-model/wheel.stl). The supplied mesh has a bounding box of approximately **80 × 80 × 20 model units**. STL files do not embed measurement units: be aware that, before printing, each model unit is equivalent to **1 millimeter**.
+The source file is in [3d-model/wheel.stl](3d-model/wheel.stl). The supplied mesh has a bounding box of approximately **80 × 80 × 20 model units**. STL files do not embed measurement units: be aware that, before printing, each model unit should be equivalent to **1 millimeter**.
 
 The firmware assumes eight indexed dispensing positions, advancing 256 of an assumed 2,048 steps for each dispense. Actual angular travel and alignment must be verified on the finished assembly.
 
@@ -88,7 +88,7 @@ The current interface does not expose a menu for listing, deleting or editing **
 
 Every time the 28BYJ-48 stepper motor rotates, **a voltage loss normally occurs**, so it is necessary to re-start the LCD screen right after it stops.
 
-Possible future improvements include a better alarm-management interface, power-loss testing, position feedback, the addition of an external motor power supply, and a controlled assessment of dispensing consistency. These are **proposals**, not implemented features.
+Possible future improvements include a better alarm-management interface, power-loss testing, wheel position feedback and the addition of an external motor power supply. These are **proposals**, not implemented features.
 
 ## Development and contributions
 
