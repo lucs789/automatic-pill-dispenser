@@ -1,6 +1,6 @@
 # Hardware Connections
 
-This document records the pin assignments of the Arduino-based pill dispenser prototype. It is based on the final firmware [**PillDispenser.ino**](firmware/PillDispenser.ino).
+This document records the pin assignments of the Arduino-based pill dispenser prototype. It is based on the final firmware [**PillDispenser.ino**](../firmware/PillDispenser.ino).
 
 ## Overview: Arduino signal pins
 
