@@ -6,15 +6,18 @@ The project addresses the difficulty of remembering multiple medication times, e
 
 **Science fair theme:** *Education in Focus: Science, Environment, and Quality of Life* (translated from Portuguese).
 
-> **Media to add:** a photo of the assembled prototype, circuit photographs, a wiring schematic, and a link to a recorded dispensing demonstration.
+<img width="1708" height="1012" alt="image" src="https://github.com/user-attachments/assets/7fb96133-722a-4f36-86c1-1c77987d6cc6" />
 
 ## How it works
 
 - The DS3231 real-time clock (RTC) supplies the current date and time.
 - A single pushbutton and the 16×2 LCD allow a user to configure recurring weekly alarms.
 - The Arduino checks whether the current weekday and time match a saved alarm.
-- On a match, the firmware writes a record of the triggered minute to EEPROM, then commands a 28BYJ-48 stepper motor to advance the dispensing wheel by **256 steps** (nominally 1/8 of a revolution using the firmware's 2,048-step assumption).
+- On a match, the firmware writes a record of the triggered minute to EEPROM (this guarantees the system won´t trigger multiple times while alarm and clock are in the same minute), then commands a 28BYJ-48 stepper motor to advance the dispensing wheel by **256 steps** (nominally 1/8 of a revolution using the firmware's 2,048-step assumption).
 - The display prompts the user to collect the pill, while the buzzer and LCD backlight provide an alert. The user presses the button to acknowledge it.
+
+[**youtubeShowcase**](https://youtu.be/HrkETQ9qOc4): a short video that shows the prototype working.
+
 
 ### Implemented in the supplied firmware
 
@@ -92,7 +95,7 @@ Possible future improvements include a better alarm-management interface, power-
 
 ## Development and contributions
 
-This project was completed as part of a school robotics elective by three students. It was inspired by the Science Buddies automatic pill dispenser reference below. The group adapted the mechanism and implementation, including a stepper motor and a custom 3D-printed wheel.
+This project was completed as part of COC Floripa´s robotics elective by three students. It was inspired by the Science Buddies automatic pill dispenser reference below. The group adapted the mechanism and implementation, including a stepper motor and a custom 3D-printed wheel.
 
 **Team credits**
 
@@ -105,7 +108,7 @@ This project was completed as part of a school robotics elective by three studen
 
 ## References
 
-- Science Buddies - *Automatic Pill Dispenser*, the project's initial inspiration: [ScienceBuddies](https://www.sciencebuddies.org/science-fair-projects/project-ideas/Elec_p105/electricity-electronics/automatic-pill-dispenser)
-- RTClib - Adafruit´s Library for the RTC-DS3231: [RTClib](https://github.com/adafruit/rtclib)
+- Science Buddies - *Automatic Pill Dispenser*, the project's initial inspiration: [**ScienceBuddies**](https://www.sciencebuddies.org/science-fair-projects/project-ideas/Elec_p105/electricity-electronics/automatic-pill-dispenser)
+- RTClib - Adafruit´s Library for the RTC-DS3231: [**RTClib**](https://github.com/adafruit/rtclib)
 
 The included source files and mechanical model are contributions from the student project and **are not copies of Science Buddies' diagrams or text**.
